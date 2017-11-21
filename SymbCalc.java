@@ -1,5 +1,3 @@
-package symbolic;
-
 public class SymbCalc {
 
     public static void main() {
@@ -16,10 +14,9 @@ public class SymbCalc {
         while (true)
             try {
                 System.out.print("? ");
-                //Scanner i p???
                 Sexpr e = p.statement();
                 System.out.println("Inläst uttryck: " + e);  // För kontroll
-                    System.out.println(e.eval(variables));
+                System.out.println(e.eval(variables));
                 // Måste ha en catch?
             } catch (Exception e) {
             }
