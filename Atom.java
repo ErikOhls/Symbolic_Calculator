@@ -8,7 +8,30 @@ public abstract class Atom extends Sexpr {
         this.argument = argument;
     }
 
+    // Kan inte komma åt Constant ifrån SymbCalc?
+    public class Constant{
+
+        public double value;
+
+        public Constant(double value){
+            this.value = value;
+        }
+
+        public String getName(){
+            return "TODO";
+        }
+
+        public double getValue(){
+            return this.value;
+        }
+
+        public boolean isConstant(){
+            //TODO
+            return true;
+        }
+    }
+
     public String toString(){
-        return this.toString.argument;
+        return this.argument.toString();
     }
 }
