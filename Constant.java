@@ -18,9 +18,7 @@ public class Constant extends Atom{
     }
 
     public boolean isConstant(){
-        if (this.value == (double)value){
-            return true;
-        } else return false;
+        return true;
     }
 }
 

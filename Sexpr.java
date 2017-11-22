@@ -15,13 +15,15 @@ public abstract class Sexpr {
     }
 
     public double getValue(){ // Detta är lite tokigt?
-        return this.getValue();
-        // return (Constant) this.expression.getValue(); ?
+        return 0;
     }
 
     public boolean isConstant(){
-        if (this.expression == (Constant)expression){
-            return expression.isConstant(); //isConstant Sexpr eller Constant?
-        } else return false;
+        return false;
     }
+
+    public String getName(){
+        return "nu blev de tokigt!";
+    }
+
 }
