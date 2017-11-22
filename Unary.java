@@ -1,11 +1,10 @@
 package symbolic;
 
-public abstract class Atom extends Sexpr {
+public abstract class Unary extends Sexpr {
 
     public Sexpr argument;
 
-    public Atom(){
-        
+    public Unary(){
     }
 
     public String toString(){
