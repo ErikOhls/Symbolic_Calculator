@@ -1,7 +1,6 @@
 package symbolic;
 
 public abstract class Unary extends Sexpr {
-
     public Sexpr argument;
 
     public Unary(){
