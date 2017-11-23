@@ -14,7 +14,7 @@ public abstract class Sexpr {
         return "TODO";
     }
 
-    public double getValue(){ // Detta är lite tokigt?
+    public double getValue(){
         return 0;
     }
 

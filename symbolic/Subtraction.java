@@ -1,7 +1,7 @@
 package symbolic;
 
 public class Subtraction extends Binary {
-    public Subtracion(Sexpr argLeft, Sexpr argRight){
+    public Subtraction(Sexpr argLeft, Sexpr argRight){
         super(argLeft, argRight);
     }
 
