@@ -5,12 +5,12 @@ public class Constant extends Atom{
     public double value;
 
     public Constant(double value){
-        this.value =value;
+        this.value = value;
     }
 
     // Get name till vad?
     public String getName(){
-        return "TODO";
+        return "var";
     }
 
     public double getValue(){
@@ -18,9 +18,7 @@ public class Constant extends Atom{
     }
 
     public boolean isConstant(){
-        if (this.value == (double)value){
-            return true;
-        } else return false;
+        return true;
     }
 }
 

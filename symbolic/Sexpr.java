@@ -13,4 +13,17 @@ public abstract class Sexpr {
     public String eval(Map variables){
         return "TODO";
     }
+
+    public double getValue(){
+        return 0;
+    }
+
+    public boolean isConstant(){
+        return false;
+    }
+
+    public String getName(){
+        return "nu blev de tokigt!";
+    }
+
 }

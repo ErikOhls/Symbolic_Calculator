@@ -4,10 +4,11 @@ public abstract class Unary extends Sexpr {
 
     public Sexpr argument;
 
-    public Unary(){
+    public Unary(Sexpr arg){
+        this.argument = arg;
     }
 
     public String toString(){
-        return this.argument.toString();
+        return getName() + "(" + argument.toString() + ")";
     }
 }
