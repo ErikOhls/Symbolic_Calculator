@@ -1,4 +1,4 @@
-package symbolic;
+//package symbolic;
 
 public class Constant extends Atom{
 

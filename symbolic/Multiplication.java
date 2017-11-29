@@ -1,4 +1,4 @@
-package symbolic;
+//package symbolic;
 
 public class Multiplication extends Binary {
     public Multiplication(Sexpr argLeft, Sexpr argRight){
