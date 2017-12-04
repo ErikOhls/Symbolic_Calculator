@@ -1,5 +1,3 @@
-package symbolic;
-
 public class Symbolic {
     public Sexpr expression;
 

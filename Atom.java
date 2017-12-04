@@ -1,5 +1,3 @@
-package symbolic;
-
 public abstract class Atom extends Sexpr {
 
     public Sexpr argument;

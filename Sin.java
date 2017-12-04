@@ -1,4 +1,3 @@
-package symbolic;
 import java.lang.Math;
 
 public class Sin extends Unary {
