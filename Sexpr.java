@@ -5,6 +5,7 @@ public abstract class Sexpr {
 
     public Sexpr expression;
     public HashMap<String, Sexpr> map;
+    protected int priority;
 
     public Sexpr(){
     }
