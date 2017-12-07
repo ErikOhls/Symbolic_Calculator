@@ -15,41 +15,29 @@ public class Parser {
 
     public Sexpr statement() throws IOException{
         Sexpr statement = expression();
-
         return statement;
     }
 
     public Sexpr expression() throws IOException{
-        Sexpr expression = number();
-
+        Sexpr argLeft = number();
         stream.nextToken();
-        System.out.println("token going into +/- = " + stream.ttype);
-        while (stream.ttype == '+' || stream.ttype == '-'){
-            if(stream.ttype == '+'){
-                //stream.nextToken();
-                System.out.println("token being assigned to argRight = " + stream.nval);
-                Sexpr argRight = number();
-                new Addition(expression, argRight);
-            }else{
-                stream.nextToken();
-                Sexpr argRight = number();
-                new Subtraction(expression, argRight);
-            }
+
+        if(stream.ttype == '+'){
+            stream.nextToken();
+            Sexpr expression = new Addition(argLeft, statement());
+            return expression;
         }
 
-        stream.pushBack();
-        return expression;
+        if(stream.ttype == '-'){
+            stream.nextToken();
+            Sexpr expression = new Subtraction(argLeft, statement());
+            return expression;
+        }
+
+        return argLeft;
     }
 
     public Sexpr number() throws IOException{
-
-
-        if(stream.ttype != stream.TT_NUMBER){
-
-            throw new SyntaxErrorException("Expected number");
-        }
-
-        System.out.println("new constant = " + stream.nval);
         return new Constant(stream.nval);
     }
 }
