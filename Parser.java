@@ -9,16 +9,45 @@ public class Parser {
         stream = new StreamTokenizer(System.in);
         stream.ordinaryChar('-');
         stream.ordinaryChar('/');
+        stream.ordinaryChar('+');
         stream.eolIsSignificant(true);
     }
 
     public Sexpr statement() throws IOException{
-        double sum;
         stream.nextToken();
-        sum = stream.nval;
+        Sexpr expression = expression();
+        return expression;
+    }
 
-        Sexpr result = new Constant(sum);
+    public Sexpr expression() throws IOException{
+        Sexpr argLeft = number();
+        stream.nextToken();
 
-        return result;
+        if(stream.ttype == '+'){
+            stream.nextToken();
+            Sexpr expression = new Addition(argLeft, statement());
+            return expression;
+        }
+
+        if(stream.ttype == '-'){
+            stream.nextToken();
+            Sexpr expression = new Subtraction(argLeft, statement());
+            return expression;
+        }
+
+        return argLeft;
+    }
+
+    public Sexpr number() throws IOException{
+        return new Constant(stream.nval);
+    }
+}
+
+class SyntaxErrorException extends RuntimeException{
+    public SyntaxErrorException(){
+        super();
+    }
+    public SyntaxErrorException(String msg){
+        super(msg);
     }
 }

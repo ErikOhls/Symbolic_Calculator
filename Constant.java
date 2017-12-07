@@ -6,7 +6,6 @@ public class Constant extends Atom{
         this.value = value;
     }
 
-    // Get name till vad?
     public String getName(){
         return "var";
     }
@@ -17,6 +16,10 @@ public class Constant extends Atom{
 
     public boolean isConstant(){
         return true;
+    }
+
+    public String toString(){
+        return "" + this.value;
     }
 }
 

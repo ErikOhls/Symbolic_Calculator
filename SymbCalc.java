@@ -15,10 +15,10 @@ public class SymbCalc {
             try {
                 System.out.print("? ");
                 Sexpr e = p.statement();
-                System.out.println("test");
                 System.out.println("Inläst uttryck: " + e);  // För kontroll
-                System.out.println(e.eval(variables));
+                //System.out.println(e.eval(variables));
             } catch (Exception e) {
+                e.printStackTrace(System.err);
             }
     }
 }
