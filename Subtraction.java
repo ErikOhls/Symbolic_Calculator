@@ -10,6 +10,7 @@ public class Subtraction extends Binary {
     public String getName(){
         return "-";
     }
+<<<<<<< HEAD
 
     public Sexpr eval(HashMap<String,Sexpr> variabel){
   	left = this.left.eval(variabel);
@@ -21,3 +22,8 @@ public class Subtraction extends Binary {
     	return 4;
     }
 }
+=======
+    
+}
+
+>>>>>>> e21208b0fa0120a3c2f5431ab4af68394e744417
