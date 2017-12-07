@@ -10,9 +10,7 @@ public abstract class Sexpr {
     public Sexpr(){
     }
 
-    public String eval(Map variables){
-        return "TODO";
-    }
+    public abstract Sexpr eval(HashMap<String, Sexpr> variables);
 
     public double getValue(){
         return 0;

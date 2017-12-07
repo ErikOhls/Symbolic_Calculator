@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.lang.Math;
 
 public class Cos extends Unary{
@@ -8,15 +9,19 @@ public class Cos extends Unary{
         super(arg);
     }
 
-    public static Sexpr cos(Sexpr arg) {
-        if (arg.isConstant()){
-            return new Constant(Math.sin(arg.getValue()));
-        } else {
-            return new Cos(arg);
-        }
-    }
+    public Sexpr eval(HashMap<String, Sexpr>variabel) {
+        this.argument = this.argument.eval(variabel);
+        return Symbolic.cos(argument);
+
+     }
 
     public String getName(){
         return "Cos";
     }
+
+
+    public int priority(){
+        return 2;
+    }
+
 }

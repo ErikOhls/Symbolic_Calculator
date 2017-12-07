@@ -7,7 +7,7 @@ public class SymbCalc {
 
         Parser p = new Parser();
 
-        Map<String,Sexpr> variables = new HashMap<String,Sexpr>();
+        HashMap<String,Sexpr> variables = new HashMap<String,Sexpr>();
 
         while (true)
             try {
