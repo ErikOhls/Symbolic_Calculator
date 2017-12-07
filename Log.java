@@ -1,5 +1,5 @@
 import java.lang.Math;
-
+import java.util.HashMap;
 public class Log extends Unary{
 
     public Sexpr argument;
@@ -18,5 +18,15 @@ public class Log extends Unary{
 
     public String getName(){
         return "Log";
+    }
+
+    public Sexpr eval(HashMap<String, Sexpr> variabel){
+        argument = this.argument.eval(variabel);
+        return Symbolic.log(argument);
+    }
+
+
+    public int priority(){
+        return 2;
     }
 }

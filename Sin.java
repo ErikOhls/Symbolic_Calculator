@@ -1,4 +1,5 @@
 import java.lang.Math;
+import java.util.HashMap;
 
 public class Sin extends Unary {
 
@@ -16,5 +17,15 @@ public class Sin extends Unary {
 
     public String getName(){
         return "Sin";
+    }
+
+    public Sexpr eval(HashMap<String, Sexpr> variabel){
+        argument = this.argument.eval(variabel);
+        return Symbolic.sin(argument);
+    }
+
+
+    public int priority(){
+        return 2;
     }
 }

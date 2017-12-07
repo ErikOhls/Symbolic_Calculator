@@ -1,5 +1,10 @@
+import java.util.Map;
 public class Symbolic {
     public Sexpr expression;
+
+    public static Sexpr constant(Sexpr arg){
+        return arg;
+    }
 
     public static Sexpr sin(Sexpr arg) {
         if (arg.isConstant()) {
@@ -68,8 +73,9 @@ public class Symbolic {
         }
      }
 
-    public static Sexpr division(Sexpr argLeft, Sexpr argRight) {
-        if (argLeft.isConstant() && argRight.isConstant()){
+    public static Sexpr division(Sexpr argLeft, Sexpr argRight) { // throws IllegalArgumentException {
+       // if (argRight.getValue() == 0){throw new IllegalArgumentException("cannot be divided by zero");} 
+       if (argLeft.isConstant() && argRight.isConstant()){
             return new Constant((argLeft.getValue()) / (argRight.getValue()));
         }
         else {

@@ -1,4 +1,7 @@
+import java.util.HashMap;
+import java.util.Map;
 public class Subtraction extends Binary {
+
     public Subtraction(Sexpr argLeft, Sexpr argRight){
         super(argLeft, argRight);
         this.priority = 3;
@@ -8,5 +11,13 @@ public class Subtraction extends Binary {
         return "-";
     }
 
- 	public 
+    public Sexpr eval(HashMap<String,Sexpr> variabel){
+  	left = this.left.eval(variabel);
+   	right = this.right.eval(variabel);
+   	return Symbolic.subtraction(left, right);
+   }
+
+     public int priority(){
+    	return 4;
+    }
 }

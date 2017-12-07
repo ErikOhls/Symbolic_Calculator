@@ -1,4 +1,5 @@
 import java.lang.Math;
+import java.util.HashMap;
 
 public class Negation extends Unary{
 
@@ -19,4 +20,16 @@ public class Negation extends Unary{
     public String getName(){
         return "Negation";
     }
+
+    public Sexpr eval(HashMap<String,Sexpr> variabel){
+        argument = this.argument.eval(variabel);
+        return Symbolic.negation(argument);
+    }
+
+
+    public int priority(){
+        return 5;
+    }
+
+
 }

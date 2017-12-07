@@ -1,3 +1,4 @@
+import java.util.HashMap;
 public abstract class Unary extends Sexpr {
 
     public Sexpr argument;

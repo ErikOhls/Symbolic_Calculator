@@ -1,5 +1,5 @@
 import java.lang.Math;
-
+import java.util.HashMap;
 public class Exp extends Unary {
     public Exp(Sexpr arg){
         super(arg);
@@ -15,5 +15,14 @@ public class Exp extends Unary {
 
     public String getName(){
         return "Exp";
+    }
+
+    public Sexpr eval(HashMap<String, Sexpr> variabel){
+        argument = this.argument.eval(variabel);
+        return Symbolic.exp(argument);
+    }
+
+    public int priority(){
+        return 2;
     }
 }
