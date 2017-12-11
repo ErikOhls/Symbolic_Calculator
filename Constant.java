@@ -19,14 +19,11 @@ public class Constant extends Atom{
         return true;
     }
 
-<<<<<<< HEAD
     public Sexpr eval(HashMap<String, Sexpr> variabel){
-        argument = this.argument.eval(variabel);
-        return Symbolic.constant(argument);
-=======
+        return this;
+    }
     public String toString(){
         return "" + this.value;
->>>>>>> e21208b0fa0120a3c2f5431ab4af68394e744417
     }
 }
 

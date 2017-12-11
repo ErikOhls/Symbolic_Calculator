@@ -14,7 +14,7 @@ public class SymbCalc {
                 System.out.print("? ");
                 Sexpr e = p.statement();
                 System.out.println("Inläst uttryck: " + e + "\n");  // För kontroll
-                //System.out.println(e.eval(variables));
+                System.out.println(e.eval(variables));
             } catch (Exception e) {
                 e.printStackTrace(System.err);
             }

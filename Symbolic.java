@@ -2,9 +2,6 @@ import java.util.Map;
 public class Symbolic {
     public Sexpr expression;
 
-    public static Sexpr constant(Sexpr arg){
-        return arg;
-    }
 
     public static Sexpr sin(Sexpr arg) {
         if (arg.isConstant()) {
@@ -82,16 +79,13 @@ public class Symbolic {
             return new Division(argLeft, argRight);
         }
      }
-
+ /*
     public static Sexpr assignment(Sexpr argLeft, Sexpr argRight) {
-        if (argLeft.isConstant()) {
-            argRight = argLeft;
-            return new Constant(argRight.getValue());
-        }
+        if (argLeft.isConstant()) return argLeft;
         else {
             return new Assignment(argLeft, argRight);
         }
      }
-
+*/
    
 }
