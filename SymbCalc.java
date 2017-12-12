@@ -1,5 +1,4 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class SymbCalc {
 
@@ -19,12 +18,15 @@ public class SymbCalc {
                 }
                 if (e.isVars()){
                     System.out.println("Variables goes here!");
+                    System.out.println(Arrays.asList(variables));
                 }
-                System.out.println("Inläst uttryck: " + e + "\n");  // För kontroll
-                System.out.println("Resultat = " + e.eval(variables));
-                Sexpr latest = new Variable("ans");
-                Sexpr ans = new Assignment(e, latest);
-                ans.eval(variables);
+                else{
+                    System.out.println("Inläst uttryck: " + e + "\n");  // För kontroll
+                    System.out.println("Resultat = " + e.eval(variables));
+                    Sexpr latest = new Variable("ans");
+                    Sexpr ans = new Assignment(e, latest);
+                    ans.eval(variables);
+                }
             } catch (Exception e) {
                 e.printStackTrace(System.err);
             }

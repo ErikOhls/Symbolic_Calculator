@@ -14,14 +14,22 @@ public class Parser {
         stream.eolIsSignificant(true);
     }
 
+    /**
+     * Parses user input and converts it to a Symbolic expression(Sexpr) which can be evaluated to a result. Also assignes variables where applicable.
+     *
+     * @param <no argument, delete this line>
+     * @return Complete parsed Sexpr of user input or instance of quit/vars
+     */
     public Sexpr statement() throws IOException{
         Sexpr statement;
         stream.nextToken();
         if(stream.ttype == stream.TT_WORD){
             if(stream.sval.equals("quit")){
+                trace("returning instance of quit", 0);
                 return Quit.getInstance();
             }
             if(stream.sval.equals("vars")){
+                trace("returning instance of vars", 0);
                 return Vars.getInstance();
             }
         }
