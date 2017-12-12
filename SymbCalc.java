@@ -22,6 +22,9 @@ public class SymbCalc {
                 }
                 System.out.println("Inläst uttryck: " + e + "\n");  // För kontroll
                 System.out.println("Resultat = " + e.eval(variables));
+                Sexpr latest = new Variable("ans");
+                Sexpr ans = new Assignment(e, latest);
+                ans.eval(variables);
             } catch (Exception e) {
                 e.printStackTrace(System.err);
             }

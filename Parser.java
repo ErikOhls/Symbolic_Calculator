@@ -170,7 +170,7 @@ public class Parser {
                     result = new Negation(factor());
                     break;
                 default :
-                    throw new SyntaxErrorException("Expected unary statement");
+                    result = new Variable(stream.sval);
                 }
             }
 
