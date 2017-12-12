@@ -1,11 +1,23 @@
 import java.io.StreamTokenizer;
 import java.io.IOException;
+import java.io.ByteArrayInputStream;
 
 public class Parser {
 
     StreamTokenizer stream;
 
     public Parser(){
+        stream = new StreamTokenizer(System.in);
+        stream.ordinaryChar('-');
+        stream.ordinaryChar('/');
+        stream.ordinaryChar('+');
+        stream.ordinaryChar('*');
+        stream.eolIsSignificant(true);
+    }
+
+    public Parser(String string){
+        ByteArrayInputStream input = new ByteArrayInputStream(string.getBytes());
+        System.setIn(input);
         stream = new StreamTokenizer(System.in);
         stream.ordinaryChar('-');
         stream.ordinaryChar('/');
@@ -91,67 +103,6 @@ public class Parser {
         stream.pushBack();
         return prod;
     }
-    /*
-    public Sexpr factor() throws IOException{
-        Sexpr result;
-        stream.nextToken();
-        if(stream.ttype == '('){
-            result = assignment();
-
-            if(stream.ttype != ')'){
-                throw new SyntaxErrorException("Expected ')'!");
-                    }
-        }
-
-        else if(stream.ttype == stream.TT_NUMBER){
-            result = number();
-        }
-
-        else{
-            result = unary();
-        }
-
-        return result;
-    }
-
-    public Sexpr unary() throws IOException{
-        Sexpr single;
-        stream.nextToken();
-        if(stream.ttype == stream.TT_WORD){
-            System.out.println("Unary type = " + stream.sval);
-            switch(stream.sval){
-            case "sin" :
-                single = new Sin(factor());
-                break;
-            case "cos" :
-                single = new Cos(factor());
-                break;
-            case "exp" :
-                single = new Exp(factor());
-                break;
-            case "log" :
-                single = new Log(factor());
-                break;
-            case "-" :
-                single = new Negation(factor());
-                break;
-            default :
-                throw new SyntaxErrorException("Expected unary statement");
-            }
-        }
-
-        else if(stream.ttype == '-'){
-            single = new Negation(factor());
-        }
-
-        else{
-            throw new SyntaxErrorException("Syntax error");
-        }
-
-        return single;
-
-    }
-    */
 
     public Sexpr factor() throws IOException{
         trace("Factor. Token = " + stream.sval + " or " + stream.nval, 3);
@@ -214,13 +165,16 @@ public class Parser {
     }
 
     public void trace(String s, int indent){
-        for(int i = indent; i > -1; i--){
-            System.err.print("-");
-            if(indent-i == indent){
-                System.err.print("|");
+        int on = 0;
+        if(on == 1){
+            for(int i = indent; i > -1; i--){
+                System.err.print("-");
+                if(indent-i == indent){
+                    System.err.print("|");
+                }
             }
+            System.err.println(s);
         }
-        System.err.println(s);
     }
 }
 
