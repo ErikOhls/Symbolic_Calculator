@@ -17,8 +17,11 @@ public class SymbCalc {
                     System.out.println("Closing down calculator");
                     return;
                 }
+                if (e.isVars()){
+                    System.out.println("Variables goes here!");
+                }
                 System.out.println("Inläst uttryck: " + e + "\n");  // För kontroll
-                System.out.println(e.eval(variables));
+                System.out.println("Resultat = " + e.eval(variables));
             } catch (Exception e) {
                 e.printStackTrace(System.err);
             }

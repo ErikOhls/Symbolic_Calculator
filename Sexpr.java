@@ -28,4 +28,8 @@ public abstract class Sexpr {
         return false;
     }
 
+    public Boolean isVars(){
+        return false;
+    }
+
 }
