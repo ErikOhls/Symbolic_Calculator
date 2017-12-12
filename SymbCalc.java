@@ -13,6 +13,10 @@ public class SymbCalc {
             try {
                 System.out.print("? ");
                 Sexpr e = p.statement();
+                if (e.isQuit()){
+                    System.out.println("Closing down calculator");
+                    return;
+                }
                 System.out.println("Inläst uttryck: " + e + "\n");  // För kontroll
                 System.out.println(e.eval(variables));
             } catch (Exception e) {

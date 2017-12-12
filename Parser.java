@@ -15,8 +15,28 @@ public class Parser {
     }
 
     public Sexpr statement() throws IOException{
-        Sexpr statement = expression();
+        Sexpr statement;
+        stream.nextToken();
+        if(stream.ttype == stream.TT_WORD){
+            if(stream.sval.equals("quit")){
+                return Quit.getInstance();
+            }
+            if(stream.sval.equals("vars")){
+                throw new SyntaxErrorException("vars is not yet implemented!");
+            }
+        }
+
+        stream.pushBack();
+        statement = assignment();
         return statement;
+    }
+
+    public Sexpr assignment() throws IOException{
+        Sexpr assignment = expression();
+        while (stream.ttype == '=') {
+            assignment = new Assignment(assignment, expression());
+        }
+        return assignment;
     }
 
     public Sexpr expression() throws IOException{
@@ -86,7 +106,11 @@ public class Parser {
                 result = number();
             }
         }
-
+        /*
+        public Sexpr unaryVar() throws IOException{
+            
+        }
+        */
         else{
             result = expression();
             if(stream.nextToken() != ')'){

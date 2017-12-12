@@ -24,4 +24,8 @@ public abstract class Sexpr {
         return "nu blev de tokigt!";
     }
 
+    public Boolean isQuit(){
+        return false;
+    }
+
 }
