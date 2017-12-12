@@ -107,7 +107,17 @@ public class Parser {
     public Sexpr factor() throws IOException{
         trace("Factor. Token = " + stream.sval + " or " + stream.nval, 3);
         Sexpr result;
+
         stream.nextToken();
+
+        if(stream.ttype == '-'){
+            stream.nextToken();
+            trace("Making new Negation: " + stream.nval, 3);
+            stream.pushBack();
+            return new Negation(factor());
+        }
+
+        //stream.nextToken();
 
         if(stream.ttype != '('){
             if(stream.ttype == stream.TT_WORD){
@@ -165,7 +175,7 @@ public class Parser {
     }
 
     public void trace(String s, int indent){
-        int on = 0;
+        int on = 1;
         if(on == 1){
             for(int i = indent; i > -1; i--){
                 System.err.print("-");

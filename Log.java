@@ -2,8 +2,6 @@ import java.lang.Math;
 import java.util.HashMap;
 public class Log extends Unary{
 
-    public Sexpr argument;
-
     public Log(Sexpr arg){
         super(arg);
     }
