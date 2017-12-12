@@ -4,7 +4,7 @@ public class Variable extends Atom{
 	public String ident;
 
 	public Variable(String ident){
-		this.ident = ident;
+      this.ident = ident;
 	}
 
 	public Sexpr eval(HashMap<String, Sexpr> variable) {

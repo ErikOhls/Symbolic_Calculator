@@ -6,7 +6,7 @@ public abstract class Atom extends Sexpr {
     }
 
     public String toString(){
-        return this.argument.toString();
+        return getName();
     }
 }
 
