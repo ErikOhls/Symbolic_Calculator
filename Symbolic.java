@@ -2,7 +2,7 @@ import java.util.Map;
 public class Symbolic {
     public Sexpr expression;
 
-/**
+    /**
      * Calculates the Sinus of a Symbolic expression(Sexpr)
      *
      * @param arg
@@ -16,7 +16,7 @@ public class Symbolic {
         }
     }
 
-/**
+    /**
      * Calculates the Cosine of a Symbolic expression(Sexpr)
      *
      * @param arg
@@ -30,7 +30,7 @@ public class Symbolic {
         }
     }
 
-/**
+    /**
      * Exponential calculation on a Symbolic expression(Sexpr) 
      *
      * @param arg
@@ -44,7 +44,7 @@ public class Symbolic {
         }
     }
 
-/**
+    /**
      * Logarithms a Symbolic expression(Sexpr)
      *
      * @param arg
@@ -58,10 +58,10 @@ public class Symbolic {
         }
     }
 
-/**
+    /**
      * Negate a Symbolic expression(Sexpr)
      *
-     * @param <arg>
+     * @param arg
      * @return new Constant; else a new instance of Negation
      */
     public static Sexpr negation(Sexpr arg) {
@@ -72,7 +72,7 @@ public class Symbolic {
         }
     }
 
-/**
+    /**
      * Add two Symbolic expressions(Sexpr) 
      *
      * @param argLeft
@@ -86,9 +86,9 @@ public class Symbolic {
         else {
             return new Addition(argLeft, argRight);
         }
-     }
+    }
 
-/**
+    /**
      * Subtract two Symbolic expressions(Sexpr)
      *
      * @param argLeft 
@@ -102,9 +102,9 @@ public class Symbolic {
         else {
             return new Subtraction(argLeft, argRight);
         }
-     }
+    }
 
-/**
+    /**
      * Multiplicates two Symbolic expressions(Sexpr)
      *
      * @param argLeft
@@ -119,9 +119,9 @@ public class Symbolic {
         else {
             return new Multiplication(argLeft, argRight);
         }
-     }
+    }
 
-/**
+    /**
      * Divides two Symbolic expressions(Sexpr) 
      *
      * @param argLeft
@@ -130,12 +130,12 @@ public class Symbolic {
      */
 
     public static Sexpr division(Sexpr argLeft, Sexpr argRight) { 
-       if (argLeft.isConstant() && argRight.isConstant()){
+        if (argLeft.isConstant() && argRight.isConstant()){
             return new Constant((argLeft.getValue()) / (argRight.getValue()));
         }
         else {
             return new Division(argLeft, argRight);
         }
-     }
-   
+    }
+
 }

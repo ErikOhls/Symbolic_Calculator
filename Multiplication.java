@@ -2,12 +2,12 @@ import java.util.HashMap;
 import java.util.Map;
 public class Multiplication extends Binary {
  
-/**
-  * Constructor
-  *
-  * @param argLeft
-  * @param argRight
-  */
+    /**
+     * Constructor
+     *
+     * @param argLeft
+     * @param argRight
+     */
     public Multiplication(Sexpr argLeft, Sexpr argRight){
         super(argLeft, argRight);
         
@@ -16,7 +16,7 @@ public class Multiplication extends Binary {
     public String getName(){
         return "*";
     }
-/**
+    /**
      * Evaluates user input and converts it to a Symbolic expression(Sexpr)
      *
      * @param variabel
@@ -26,13 +26,13 @@ public class Multiplication extends Binary {
  	      left = this.left.eval(variabel);
    	    right = this.right.eval(variabel);
    	    return Symbolic.multiplication(left, right);
-   }
-/**
+    }
+    /**
      * to access the number of priority
      *
      * @return the number of priority
      */
-     public int priority(){
+    public int priority(){
         return 3;
     }
 }

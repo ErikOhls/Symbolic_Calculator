@@ -52,7 +52,7 @@ public class Parser {
         stream.nextToken();
         return statement;
     }
-/**
+    /**
      * Parses user input and converts it to a Symbolic expression(Sexpr) which can be evaluated to a result.
      *
      * @throws IOException - if an I/O error occurs
@@ -68,7 +68,7 @@ public class Parser {
         }
         return assignment;
     }
-/**
+    /**
      * Assigns an addition or subtraction or descends further into parser logic.
      *
      * @throws IOException - if an I/O error occurs
@@ -93,7 +93,7 @@ public class Parser {
         stream.pushBack();
         return sum;
     }
-/**
+    /**
      * Assigns an multiplication or division or descends further into parser logic.
      *
      * @throws IOException - if an I/O error occurs
@@ -120,7 +120,7 @@ public class Parser {
         return prod;
     }
     
-/**
+    /**
      * Assigns an unary or descends further into parser logic
      *
      * @throws IOException - if an I/O error occurs
@@ -178,7 +178,7 @@ public class Parser {
         }
         return result;
     }
-/**
+    /**
      * Assigns a number or a variable 
      *
      * @throws IOException - if an I/O error occurs
@@ -199,7 +199,7 @@ public class Parser {
             return new Variable(stream.sval);
         }
     }
-/**
+    /**
      * Parses user input and converts it to a Symbolic expression(Sexpr) which can be evaluated to a result. Also assignes variables where applicable.
      *
      * @param s

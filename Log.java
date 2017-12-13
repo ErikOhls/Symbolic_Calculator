@@ -3,11 +3,11 @@ import java.util.HashMap;
 public class Log extends Unary{
 
 
-/**
-    * Constructor
-    *
-    * @param arg
-    */
+    /**
+     * Constructor
+     *
+     * @param arg
+     */
 
     public Log(Sexpr arg){
         super(arg);
@@ -16,7 +16,7 @@ public class Log extends Unary{
     public String getName(){
         return "Log";
     }
-/**
+    /**
      * Evaluates user input and converts it to a Symbolic expression(Sexpr)
      *
      * @param variabel
@@ -27,7 +27,7 @@ public class Log extends Unary{
         return Symbolic.log(argument);
     }
 
-/**
+    /**
      * to access the number of priority
      *
      * @return the number of priority

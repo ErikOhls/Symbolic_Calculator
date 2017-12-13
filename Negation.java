@@ -4,11 +4,11 @@ import java.util.HashMap;
 public class Negation extends Unary{
 
 
-/**
-    * Constructor
-    *
-    * @param arg
-    */
+    /**
+     * Constructor
+     *
+     * @param arg
+     */
     public Negation(Sexpr arg){
         super(arg);
     }
@@ -16,7 +16,7 @@ public class Negation extends Unary{
     public String getName(){
         return "Negation";
     }
-/**
+    /**
      * Evaluated input and converts it to a Symbolic expression(Sexpr)
      *
      * @param variabel
@@ -27,7 +27,7 @@ public class Negation extends Unary{
         return Symbolic.negation(argument);
     }
 
-/**
+    /**
      * to access the number of priority
      *
      * @return the number of priority

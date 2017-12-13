@@ -2,7 +2,7 @@ import java.util.*;
 
 public class SymbCalc {
 
- /**
+    /**
      * Main entry point for program. Handels user input and evaluates expressions.
      *
      */
