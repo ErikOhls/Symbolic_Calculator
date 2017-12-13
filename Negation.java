@@ -3,7 +3,6 @@ import java.util.HashMap;
 
 public class Negation extends Unary{
 
-    public Sexpr argument;
 
 /**
     * Constructor

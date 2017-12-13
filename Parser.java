@@ -1,11 +1,23 @@
 import java.io.StreamTokenizer;
 import java.io.IOException;
+import java.io.ByteArrayInputStream;
 
 public class Parser {
 
     StreamTokenizer stream;
 
     public Parser(){
+        stream = new StreamTokenizer(System.in);
+        stream.ordinaryChar('-');
+        stream.ordinaryChar('/');
+        stream.ordinaryChar('+');
+        stream.ordinaryChar('*');
+        stream.eolIsSignificant(true);
+    }
+
+    public Parser(String string){
+        ByteArrayInputStream input = new ByteArrayInputStream(string.getBytes());
+        System.setIn(input);
         stream = new StreamTokenizer(System.in);
         stream.ordinaryChar('-');
         stream.ordinaryChar('/');
@@ -114,10 +126,19 @@ public class Parser {
      * @throws IOException - if an I/O error occurs
      * @return partially parsed Sexpr of user input
      */
+
     public Sexpr factor() throws IOException{
         trace("Factor. Token = " + stream.sval + " or " + stream.nval, 3);
         Sexpr result;
+
         stream.nextToken();
+
+        if(stream.ttype == '-'){
+            stream.nextToken();
+            trace("Making new Negation: " + stream.nval, 3);
+            stream.pushBack();
+            return new Negation(factor());
+        }
 
         if(stream.ttype != '('){
             if(stream.ttype == stream.TT_WORD){
@@ -185,13 +206,16 @@ public class Parser {
      * @param indent
      */
     public void trace(String s, int indent){
-        for(int i = indent; i > -1; i--){
-            System.err.print("-");
-            if(indent-i == indent){
-                System.err.print("|");
+        int on = 1;
+        if(on == 1){
+            for(int i = indent; i > -1; i--){
+                System.err.print("-");
+                if(indent-i == indent){
+                    System.err.print("|");
+                }
             }
+            System.err.println(s);
         }
-        System.err.println(s);
     }
 }
 

@@ -3,7 +3,6 @@ import java.lang.Math;
 
 public class Cos extends Unary{
 
-    public Sexpr argument;
 /**
     * Constructor
     *
