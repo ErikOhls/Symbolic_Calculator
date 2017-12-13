@@ -17,7 +17,12 @@ public class Quit extends Command{
     public String getName(){
         return null;
     }
-
+/**
+     * Evaluates user input and converts it to a Symbolic expression(Sexpr).
+     * 
+     * @param variabel
+     * @return null
+     */
     public Sexpr eval(HashMap<String, Sexpr> variables){
         return null;
     }

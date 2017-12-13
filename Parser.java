@@ -17,7 +17,7 @@ public class Parser {
     /**
      * Parses user input and converts it to a Symbolic expression(Sexpr) which can be evaluated to a result. Also assignes variables where applicable.
      *
-     * @param <no argument, delete this line>
+     * @throws IOException - if an I/O error occurs
      * @return Complete parsed Sexpr of user input or instance of quit/vars
      */
     public Sexpr statement() throws IOException{
@@ -40,7 +40,12 @@ public class Parser {
         stream.nextToken();
         return statement;
     }
-
+/**
+     * Parses user input and converts it to a Symbolic expression(Sexpr) which can be evaluated to a result.
+     *
+     * @throws IOException - if an I/O error occurs
+     * @return Complete parsed Sexpr of user input
+     */
     public Sexpr assignment() throws IOException{
         trace("Assignment. Token = " + stream.sval + " or " + stream.nval, 0);
         Sexpr assignment = expression();
@@ -51,7 +56,12 @@ public class Parser {
         }
         return assignment;
     }
-
+/**
+     * Assigns an addition or subtraction or descends further into parser logic.
+     *
+     * @throws IOException - if an I/O error occurs
+     * @return Partially parsed Sexpr of user input
+     */
     public Sexpr expression() throws IOException{
         trace("Expression. Token = " + stream.sval  + " or " + stream.nval, 1);
         Sexpr sum = term();
@@ -71,6 +81,12 @@ public class Parser {
         stream.pushBack();
         return sum;
     }
+/**
+     * Assigns an multiplication or division or descends further into parser logic.
+     *
+     * @throws IOException - if an I/O error occurs
+     * @return Partially parsed Sexpr of user input
+     */
 
     public Sexpr term() throws IOException{
         trace("Term. Token = " + stream.sval + " or " + stream.nval, 2);
@@ -91,68 +107,13 @@ public class Parser {
         stream.pushBack();
         return prod;
     }
-    /*
-    public Sexpr factor() throws IOException{
-        Sexpr result;
-        stream.nextToken();
-        if(stream.ttype == '('){
-            result = assignment();
-
-            if(stream.ttype != ')'){
-                throw new SyntaxErrorException("Expected ')'!");
-                    }
-        }
-
-        else if(stream.ttype == stream.TT_NUMBER){
-            result = number();
-        }
-
-        else{
-            result = unary();
-        }
-
-        return result;
-    }
-
-    public Sexpr unary() throws IOException{
-        Sexpr single;
-        stream.nextToken();
-        if(stream.ttype == stream.TT_WORD){
-            System.out.println("Unary type = " + stream.sval);
-            switch(stream.sval){
-            case "sin" :
-                single = new Sin(factor());
-                break;
-            case "cos" :
-                single = new Cos(factor());
-                break;
-            case "exp" :
-                single = new Exp(factor());
-                break;
-            case "log" :
-                single = new Log(factor());
-                break;
-            case "-" :
-                single = new Negation(factor());
-                break;
-            default :
-                throw new SyntaxErrorException("Expected unary statement");
-            }
-        }
-
-        else if(stream.ttype == '-'){
-            single = new Negation(factor());
-        }
-
-        else{
-            throw new SyntaxErrorException("Syntax error");
-        }
-
-        return single;
-
-    }
-    */
-
+    
+/**
+     * Assigns an unary or descends further into parser logic
+     *
+     * @throws IOException - if an I/O error occurs
+     * @return partially parsed Sexpr of user input
+     */
     public Sexpr factor() throws IOException{
         trace("Factor. Token = " + stream.sval + " or " + stream.nval, 3);
         Sexpr result;
@@ -196,7 +157,12 @@ public class Parser {
         }
         return result;
     }
-
+/**
+     * Assigns a number or a variable 
+     *
+     * @throws IOException - if an I/O error occurs
+     * @return Sexpr variable or constant
+     */
     public Sexpr number() throws IOException{
         trace("Number. Token = " + stream.nval, 4);
         stream.nextToken();
@@ -212,7 +178,12 @@ public class Parser {
             return new Variable(stream.sval);
         }
     }
-
+/**
+     * Parses user input and converts it to a Symbolic expression(Sexpr) which can be evaluated to a result. Also assignes variables where applicable.
+     *
+     * @param s
+     * @param indent
+     */
     public void trace(String s, int indent){
         for(int i = indent; i > -1; i--){
             System.err.print("-");

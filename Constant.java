@@ -2,7 +2,11 @@ import java.util.HashMap;
 public class Constant extends Atom{
 
     public double value;
-
+/**
+    * Constructor
+    *
+    * @param value
+    */
     public Constant(double value){
         this.value = value;
     }

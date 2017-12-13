@@ -11,7 +11,11 @@ public abstract class Sexpr {
     }
 
     public abstract Sexpr eval(HashMap<String, Sexpr> variables);
-
+/**
+     * to access the value
+     *
+     * @return the current value
+     */
     public double getValue(){
         return 0;
     }
@@ -19,7 +23,11 @@ public abstract class Sexpr {
     public boolean isConstant(){
         return false;
     }
-
+/**
+     * to access the name
+     *
+     * @return the current name
+     */
     public String getName(){
         return "nu blev de tokigt!";
     }

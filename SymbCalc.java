@@ -2,6 +2,11 @@ import java.util.*;
 
 public class SymbCalc {
 
+ /**
+     * Main entry point for program. Handels user input and evaluates expressions.
+     *
+     */
+
     public static void main(String[] args) {
 
         Parser p = new Parser();
